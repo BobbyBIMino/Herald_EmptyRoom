@@ -66,43 +66,23 @@ ul,li{list-style:none;}
     <form method="post" action="/simple">
     <label class="place">校区</label>
         <select name="arg1" style="width:70px" id="placeD">
-        <option value="jlh">九龙湖</option>
-        <option value="spl">四牌楼</option>
-        <option value="djq">丁家桥</option>
-        <option value="all">全部</option>
+        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
+        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
+        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
+        <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option>
     </select>
     <br>
   	<label>从第</label>
-    <select name="arg3" style="width:70px">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
+    <select name="arg3" style="width:50px">
+    {%for i in range(1,14)%}
+    <option value={{i}} {%if (int(classBegin)==i)%} selected="selected" {%end%}>{{i}}</option>
+    {%end%}
     </select>
 	<label>到第</label>
-        <select name="arg4" style="width:70px">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
+    <select name="arg4" style="width:50px">
+    {%for i in range(1,14)%}
+    <option value={{i}} {%if (int (classEnd)==i)%} selected="selected" {%end%}>{{i}}</option>
+    {%end%}
     </select>
 	<label>节课</label>
     
@@ -112,67 +92,44 @@ ul,li{list-style:none;}
 	<input type="submit" name="arg2" value="查询明天" style="width:85px;maigin-left:20px;margin-top:5px"/>
     </form>
     <br>
-		<input style="width:250px;height:300px;maigin-left:0px;margin-top:2px"
-        type="text" readonly="readonly" value={{emptyroom}}>
+    <textarea rows="15" cols="30" >{{emptyroom}}</textarea>
 	</div>
     <div align="center" style="z-index:{{index2}}" class={{select2}}>
         <form method="post" action="/complex">
         <label>校区</label>
         <select name="arg1" style="width:70px" id="placeE" >
-        <option value="jlh">九龙湖</option>
-        <option value="spl">四牌楼</option>
-        <option value="djq">丁家桥</option>
-        <option value="all">全部</option>
+        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
+        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
+        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
+        <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option>
         </select>
         <br>
         <label>第</label>
-        <input name="arg2" type="text" value={{week}}  style="width:70px;font-size:13px"
+        <input name="arg2" type="text" value={{week}}  style="width:50px;font-size:13px"
         onblur="if (this.value ==''){this.value='输入数字'}" onfocus="if (this.value =='输入数字'){this.value =''}"/>
         <label>周，周</label>
-        <input name="arg3" type="text" value={{day}}  style="width:70px;font-size:13px"
+        <input name="arg3" type="text" value={{day}}  style="width:50px;font-size:13px"
         onblur="if (this.value ==''){this.value='输入数字'}" onfocus="if (this.value =='输入数字'){this.value =''}"/>
     <br>
     <label>从第</label>
-    <select name="arg4" style="width:70px">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
+    <select name="arg4" style="width:50px">
+    {%for i in range(1,14)%}
+    <option value={{i}} {%if (int(classBegin)==i)%} selected="selected" {%end%}>{{i}}</option>
+    {%end%}
     </select>
     <label>到第</label>
-        <select name="arg5" style="width:70px">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-    </select>
+
+        <select name="arg5" style="width:50px">
+        {%for i in range(1,14)%}
+        <option value={{i}} {%if (int(classEnd)==i)%} selected="selected" {%end%}>{{i}} </option>
+        {%end%}
+        </select>
     <label>节课</label>
 
         <input type="submit" value="点击查询" style="width:85px;margin-top:0px;margin-left:5px"/>
         </form>
         <br>
-        <input style="width:250px;height:300px;maigin-left:-1px;margin-top:2px"
-        type="text" readonly="readonly" name="empty" value= {{emptyroom}} >
-
-
+     <textarea rows="15" cols="30" >{{emptyroom}}</textarea>
     </div>
 
 
