@@ -69,7 +69,7 @@ ul,li{list-style:none;}
         <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
         <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
         <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
-        <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option>
+        <!-- <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option> -->
     </select>
     <br>
   	<label>从第</label>
@@ -101,7 +101,7 @@ ul,li{list-style:none;}
         <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
         <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
         <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
-        <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option>
+        <!-- <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option> -->
         </select>
         <br>
         <label>第</label>
@@ -146,31 +146,6 @@ window.onload = function() {
     var oLi = oDiv.getElementsByTagName("div")[0].getElementsByTagName("li");
     var aCon = oDiv.getElementsByTagName("div")[1].getElementsByTagName("div");
     var timer = null;
-    //保持下次刷新时校区项是上次选择的，但不知道为什么加了下面这段代码之后变得异常卡，而且没有起到相应的作用。
-    // var placeD = document.getElementById("placeD");
-    // var placeE = document.getElementById("placeE");
-    // if ({{place}}=="jlh")
-    // {
-    //     placeD[0].selected=true;
-    //     placeE[0].selected=true;
-
-    // }
-    // else if ({{place}}=="spl")
-    //     {
-    //         placeD[1].selected=true;
-    //         placeE[1].selected=true;
-
-    //     }
-    // else if({{place}}=="djq")
-    //     {
-    //         placeD[2].selected=true;
-    //         placeE[2].selected=true;
-
-    //     }
-    // else
-    // {
-    //     placeD[3].selected=true;
-    //     placeE[3].selected=true;
 
     
 
