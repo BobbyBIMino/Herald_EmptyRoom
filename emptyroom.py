@@ -16,14 +16,14 @@ import tornado.gen
 import sys
 from tornado.httpclient import HTTPRequest, AsyncHTTPClient
 from tornado.options import define, options
-define("port", default=8170, help="run on the given port", type=int)
+define("port", default=8029, help="run on the given port", type=int)
 url='http://herald.seu.edu.cn/api/emptyroom'
 uuid='0000000000000000000000000000000000000000'
 
 class GetHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("emptyroom.html",emptyroom="",place="jlh",classBegin="1",classEnd="1",
-        	week="输入数字",day="输入数字",index1="3",index2="2",select1="cur",select2="")
+        	week="1",day="1",index1="3",index2="2",select1="cur",select2="")
 class SimpleHander(tornado.web.RequestHandler):
 	@tornado.gen.engine
 	@tornado.web.asynchronous
@@ -58,7 +58,7 @@ class SimpleHander(tornado.web.RequestHandler):
 
 
 		self.render("emptyroom.html",emptyroom = dataD,place=arg1,classBegin=arg3,classEnd=arg4,
-			week="输入数字",day="输入数字",index1="3",index2="2",select1="cur",select2="")
+			week="1",day="1",index1="3",index2="2",select1="cur",select2="")
 
 class ComplexHander(tornado.web.RequestHandler):
 	@tornado.gen.engine

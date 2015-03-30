@@ -18,25 +18,31 @@ ul,li{list-style:none;}
 #tab {position:relative;}
 #tab .tabList ul li{
     float:left;
-    background:#FFFFFF;
-    border:1px solid #ccc;
-    padding:5px 0;
-    width:149px;
+    background:#FCF8F8;
+    border:1px solid #828282;
+    padding:1px 0;
+    font-size:15px;
+    width:80px;
     text-align:center;
-    margin-left:-1px;
     position:relative;
     cursor:pointer;
+    left: 20%;
     z-index: 100;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px; 
 }
 #tab .tabCon{
-    position:absolute;
-    left:0px;
-    top:32px;
+    position:relative;
+    top:30px;
     font-size:14px;
     border:1px solid #ccc;
-    border-top:none;
     width:300px;
     height:500px;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px; 
+
 }
 #tab .tabCon div{
     padding:10px;
@@ -46,7 +52,7 @@ ul,li{list-style:none;}
 }
 #tab .tabList li.cur{
     border-bottom:none;
-    background:#1E44DD;
+    background:#3192FA;
 }
 #tab .tabCon div.cur{
     opacity:1;
@@ -62,24 +68,23 @@ ul,li{list-style:none;}
   </div>
 
   <div align="center" class="tabCon">
-    <div  align="center" class={{select1}} style="z-index:{{index1}}">
+    <div  align="center" class={{select1}} style="z-index:{{index1}};left:0px">
     <form method="post" action="/simple">
     <label class="place">校区</label>
-        <select name="arg1" style="width:70px" id="placeD">
+        <select name="arg1" style="width:70px;margin-top:5px" id="placeD" >
         <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
         <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
         <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
-        <!-- <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option> -->
     </select>
     <br>
   	<label>从第</label>
-    <select name="arg3" style="width:50px">
+    <select name="arg3" style="width:50px;margin-top:5px">
     {%for i in range(1,14)%}
     <option value={{i}} {%if (int(classBegin)==i)%} selected="selected" {%end%}>{{i}}</option>
     {%end%}
     </select>
 	<label>到第</label>
-    <select name="arg4" style="width:50px">
+    <select name="arg4" style="width:50px;margin-top:5px">
     {%for i in range(1,14)%}
     <option value={{i}} {%if (int (classEnd)==i)%} selected="selected" {%end%}>{{i}}</option>
     {%end%}
@@ -91,45 +96,53 @@ ul,li{list-style:none;}
 	<input type="submit" name="arg2" value="查询今天" style="width:85px;margin-top:5px"/>
 	<input type="submit" name="arg2" value="查询明天" style="width:85px;maigin-left:20px;margin-top:5px"/>
     </form>
+        <hr style="width:113%;margin-left:-10px;margin-top:5px;height:1px;border-width:0;color:#ccc;background-color:#ccc;border-radius:5px; " />
     <br>
-    <textarea rows="15" cols="30" >{{emptyroom}}</textarea>
+
+    <textarea rows="18" cols="30" >{{emptyroom}}</textarea>
 	</div>
-    <div align="center" style="z-index:{{index2}}" class={{select2}}>
+    <div align="center" style="z-index:{{index2}};left:0px" class={{select2}}>
         <form method="post" action="/complex">
-        <label>校区</label>
-        <select name="arg1" style="width:70px" id="placeE" >
-        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
-        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
-        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
-        <!-- <option value="all" {%if (place=="all")%} selected="selected"{%end%}>全部</option> -->
+
+        <label style="margin-top:5px">第</label>
+        <select name="arg2" style="width:50px;margin-top:5px">
+        {%for i in range(1,21)%}
+        <option value={{i}} {%if (int(week)==i )%} selected="selected"{%end%}>{{i}}</option>
+        {%end%}
         </select>
-        <br>
-        <label>第</label>
-        <input name="arg2" type="text" value={{week}}  style="width:50px;font-size:13px"
-        onblur="if (this.value ==''){this.value='输入数字'}" onfocus="if (this.value =='输入数字'){this.value =''}"/>
         <label>周，周</label>
-        <input name="arg3" type="text" value={{day}}  style="width:50px;font-size:13px"
-        onblur="if (this.value ==''){this.value='输入数字'}" onfocus="if (this.value =='输入数字'){this.value =''}"/>
+        <select name="arg3" style="width:50px;margin-top:5px">
+        {%for i in range(1,8)%}
+        <option value={{i}} {%if (int(day)==i )%} selected="selected"{%end%}>{{i}}</option>
+        {%end%}
+        </select>
     <br>
     <label>从第</label>
-    <select name="arg4" style="width:50px">
+    <select name="arg4" style="width:50px;margin-top:5px">
     {%for i in range(1,14)%}
     <option value={{i}} {%if (int(classBegin)==i)%} selected="selected" {%end%}>{{i}}</option>
     {%end%}
     </select>
     <label>到第</label>
 
-        <select name="arg5" style="width:50px">
+        <select name="arg5" style="width:50px;margin-top:5px">
         {%for i in range(1,14)%}
         <option value={{i}} {%if (int(classEnd)==i)%} selected="selected" {%end%}>{{i}} </option>
         {%end%}
         </select>
-    <label>节课</label>
-
-        <input type="submit" value="点击查询" style="width:85px;margin-top:0px;margin-left:5px"/>
+    <label style="margin-top:5px">节课</label>
+    <br>
+            <label style="margin-top:5px">校区</label>
+        <select name="arg1" style="width:70px;margin-top:5px" id="placeE" >
+        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
+        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
+        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
+        </select>
+        <input type="submit" value="点击查询" style="width:85px;margin-left:5px"/>
         </form>
+        <hr style="width:113%;margin-left:-10px;margin-top:5px;height:1px;border-width:0;color:#ccc;background-color:#ccc;border-radius:5px; " />
         <br>
-     <textarea rows="15" cols="30" >{{emptyroom}}</textarea>
+     <textarea rows="18" cols="30"  >{{emptyroom}}</textarea>
     </div>
 
 
@@ -146,9 +159,6 @@ window.onload = function() {
     var oLi = oDiv.getElementsByTagName("div")[0].getElementsByTagName("li");
     var aCon = oDiv.getElementsByTagName("div")[1].getElementsByTagName("div");
     var timer = null;
-
-    
-
     aCon[0].style.zIndex="3";
     for (var i = 0; i < oLi.length; i++) {
         oLi[i].index = i;
