@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="{{ static_url('jquery.mobile-1.4.2.css') }}">
+		<title>空闲教室查询</title>
+	</head>
+	<body>
+	<div data-role="page">
+		<div role="main" class="ui-content">
+			<center>
+			<div data-role="fieldcontain">
+				<form>
+				<fieldset data-role="controlgroup" data-type ="horizontal" data-mini="true">
+						<input type="radio" name="pattern" id="1" {%if (select1=="cur")%} checked="checked"{%end%}>
+						<label for="1">快捷查询</label>
+						<input type="radio" name="pattern" id="2" {%if (select1=="cur")%} checked="checked"{%end%}>
+						<label for="2">指定查询</label>
+					</fieldset>
+				</form>
+
+					<ul id="curriculum" data-role="listview" data-inset="true">
+    				<form method="post" action="/simple">
+
+					<li class=" {%if (select1=="")%} ui-screen-hidden {%end%} ">
+					    <label class="place">校区</label>
+					        <select name="arg1">
+					        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
+					        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
+					        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
+					    </select>
+					    <br>
+					  	<label>从第</label>
+					    <select name="arg3" >
+					    {%for i in range(1,14)%}
+					    <option value={{i}} {%if (int(classBegin)==i)%} selected="selected" {%end%}>{{i}}</option>
+ 					   {%end%}
+					    </select>
+						<label>到第</label>
+					    <select name="arg4" >
+					    {%for i in range(1,14)%}
+					    <option value={{i}} {%if (int (classEnd)==i)%} selected="selected" {%end%}>{{i}}</option>
+					    {%end%}
+					    </select>
+						<label>节课</label>
+						<button name="arg2" value="查询今天" class="ui-btn-inline ui-btn ui-corner-all" />查询今天</button>
+						<button name="arg2" value="查询明天" class="ui-btn-inline ui-btn ui-corner-all"/>查询明天</button>
+
+					</li>
+    				</form>
+					<form method="post" action="/complex">
+					<li class="{%if (select2=="")%} ui-screen-hidden {%end%}">
+					        <label style="margin-top:5px">第</label>
+				        <select name="arg2" >
+				        {%for i in range(1,21)%}
+				        <option value={{i}} {%if (int(week)==i )%} selected="selected"{%end%}>{{i}}</option>
+				        {%end%}
+				        </select>
+				        <label>周，周</label>
+				        <select name="arg3" >
+				        {%for i in range(1,8)%}
+				        <option value={{i}} {%if (int(day)==i )%} selected="selected"{%end%}>{{i}}</option>
+				        {%end%}
+				        </select>
+				    <br>
+				    <label>从第</label>
+				    <select name="arg4" >
+				    {%for i in range(1,14)%}
+				    <option value={{i}} {%if (int(classBegin)==i)%} selected="selected" {%end%}>{{i}}</option>
+				    {%end%}
+				    </select>
+				    <label>到第</label>
+
+ 				       <select name="arg5" >
+				        {%for i in range(1,14)%}
+				        <option value={{i}} {%if (int(classEnd)==i)%} selected="selected" {%end%}>{{i}} </option>
+				        {%end%}
+				        </select>
+				    <label >节课</label>
+				    <br>
+				            <label >校区</label>
+				        <select name="arg1"  >
+				        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
+				        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
+				        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
+				        </select>
+						<button  class="ui-btn-inline ui-btn ui-corner-all"/>查询明天</button>
+					</li>
+    				</form>
+    				<li>
+    					{{emptyroom}}
+    				</li>
+				</ul>
+			</div>
+			</center>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="{{ static_url('js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ static_url('js/jquery.mobile-1.4.2.min.js') }}"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("[type=radio]").on('click',function(){
+			$('.semester').addClass("ui-screen-hidden");
+			$('.' + this.id).removeClass("ui-screen-hidden");
+		});
+	});
+	</script>
+	</body>
+</html>
