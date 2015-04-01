@@ -16,7 +16,7 @@ import tornado.gen
 import sys
 from tornado.httpclient import HTTPRequest, AsyncHTTPClient
 from tornado.options import define, options
-define("port", default=8029, help="run on the given port", type=int)
+define("port", default=8037, help="run on the given port", type=int)
 url='http://herald.seu.edu.cn/api/emptyroom'
 uuid='0000000000000000000000000000000000000000'
 
@@ -106,12 +106,13 @@ handlers = [
     (r"/complex",ComplexHander)
 ]
 
-path=sys.path[0]
-
+# path=sys.path[0]
+template_path=os.path.join(os.path.dirname(__file__), "templates")
+static_path=os.path.join(os.path.dirname(__file__), "static")
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
-    app = tornado.web.Application(handlers, path)
+    app = tornado.web.Application(handlers,template_path=template_path,static_path=static_path)
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
