@@ -8,7 +8,7 @@
 	</head>
 	<body>
 <style type="text/css">
-#menu li { 
+#menu li {
 float:left;
 }
 </style>
@@ -27,9 +27,9 @@ float:left;
 
     				<form method="post" action="/simple">
 					<li class=" {%if (select1=="")%} ui-screen-hidden {%end%} pattern 1" >
-					<fieldset data-role="fieldcontain" data-type ="horizontal" data-mini="true">
-					        <label class="place" for="4">校区</label>
-					        <select name="arg1" id="4">
+					<fieldset data-role="fieldcontain" data-type ="horizontal" >
+					        <label class="place" for="4" font>校区</label>
+					        <select name="arg1" id="4" style="width:50px">
 					        <option value="jlh" {%if (place=="jlh")%} selected="selected"{%end%}>九龙湖</option>
 					        <option value="spl" {%if (place=="spl")%} selected="selected"{%end%}>四牌楼</option>
 					        <option value="djq" {%if (place=="djq")%} selected="selected"{%end%}>丁家桥</option>
@@ -93,7 +93,9 @@ float:left;
 					</li>
     				</form>
     				<li>
-    				{{emptyroom}}
+
+    						<textarea readonly="readonly">{{emptyroom}}</textarea>
+    				
     				</li>
 				</ul>
 			</div>
