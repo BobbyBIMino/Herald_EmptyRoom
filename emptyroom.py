@@ -16,7 +16,7 @@ import tornado.gen
 import sys
 from tornado.httpclient import HTTPRequest, AsyncHTTPClient
 from tornado.options import define, options
-define("port", default=8037, help="run on the given port", type=int)
+define("port", default=8011, help="run on the given port", type=int)
 url='http://herald.seu.edu.cn/api/emptyroom'
 uuid='0000000000000000000000000000000000000000'
 
@@ -52,8 +52,8 @@ class SimpleHander(tornado.web.RequestHandler):
 		for item in dataDict:
 			counter=counter+1
 			dataD+=item
-			dataD+="  "
-			if counter%3==0 :
+			dataD+="   "
+			if counter%2==0 :
 				dataD+='\n'
 
 
@@ -92,8 +92,8 @@ class ComplexHander(tornado.web.RequestHandler):
 		for item in dataDict:
 			counter=counter+1
 			dataD+=item
-			dataD+="  "
-			if counter%3==0 :
+			dataD+="   "
+			if counter%2==0 :
 				dataD+='\n'
 
 		self.render("emptyroom.html",emptyroom = dataD,place=arg1,classBegin=arg4,classEnd=arg5,
